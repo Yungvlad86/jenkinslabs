@@ -1,4 +1,3 @@
-
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -7,17 +6,12 @@ pipeline {
         timestamps()
     }
     stages {
-	stage("First step") {
-            steps {
-                sh 'git clone https://github.com/Yungvlad86/jenkinslabs.git'
-            }
-        }
-        stage("Second step") {
+        stage("First step") {
             steps {
                 sh 'pip3 install -r requirements.txt'
             }
         }
-        stage("Third step") {
+        stage("Second step") {
             steps {
                 sh 'python3 -m pytest -v --junitxml=report.xml'
 				junit '*.xml'
